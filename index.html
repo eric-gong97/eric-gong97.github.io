@@ -1,36 +1,119 @@
-<!doctype html>
-<html class="no-js" lang="">
-  <head>
-      <title>Test - A Sample Website</title>
-      <meta charset="utf-8">
-      <link rel="stylesheet" href="css/normalize.css">
-      <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-      <h1 id='site_title'>Test Website</h1>
-      <hr></hr>
-      <div class="article">
-          <h2>
-            <a href="article_1.html">Article 1 Headline</a>
-            <div>blah blah blah</div>
-          </h2>
-          
-          <p>This is a summary of article 1</p>
-      </div>
-      <hr></hr>
-      <div class="article">
-          <h2><a href="article_2.html">Article 2 Headline</a></h2>
-          <p>This is a summary of article 2</p>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Florida_Box_Turtle_Digon3_re-edited.jpg/1280px-Florida_Box_Turtle_Digon3_re-edited.jpg">
-      </div>
-      <hr></hr>
+<html>
+    <head>
+        <title>WHAT</title>
+        <style>
 
-      <div class='footer'>
-          <p>Footer Information</p>
-      </div>
+          body {
+                margin: 0;
+                background-image: url("backgroundb.jpg");
+                background-repeat: no-repeat;
+                background-size:100% 100vh;
 
-      <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-      <script src="js/plugins.js"></script>
-      <script src="js/main.js"></script>
-  </body>
+            }
+
+            @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+            }
+
+            #main-container {
+                height: 100%;
+            }
+            #openPresent {
+                display: none;
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 100%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+
+            #closedPresent {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+
+            #flex-container {
+                padding: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+
+            img {
+                height: 200px;
+                opacity: 0;
+            }
+
+            h1 {
+              display: block;
+              text-align: center;
+              margin-top: 400px;
+              color: #40ff00;
+            }
+
+            button {
+              display: block;
+              margin: 0 auto;
+            }
+
+            #buttondiv {
+              display: none;
+            }
+        </style>
+
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    </head>
+    <body>
+        <div id="main-container">
+            <div id="flex-container">
+                <img src="stand.png" alt="">
+                <img src="basketball.png" alt="">
+                <img src="clog.png" alt="">
+            </div>
+            <dotlottie-player src="https://lottie.host/5e395062-ee20-4e58-bc2e-fd5a0c7f79a7/WmjncWb1Ot.json" onclick="clickPresent()" id="closedPresent" background="transparent" speed="1" style="width: 400px; height: 400px" direction="1" playMode="normal" loop hover></dotlottie-player>
+            <dotlottie-player src="https://lottie.host/36fea49c-ef00-41be-ae8f-2829904c39e0/9SIiRcudC6.json" id="openPresent" background="transparent" speed="1" style="width: 500px; height: 500px" direction="1" playMode="normal" hover></dotlottie-player>
+            <div class="">
+              <h1>CLICK ME!</h1>
+              <div id="buttondiv">
+                <a href="next.html"><button type="button" name="button">CLICK ME FOR THE BEST PART</button></a>
+              </div>
+
+
+
+            </div>
+
+        </div>
+        <audio controls autoplay>
+  <source src="hbd.mp3" type="audio/mp3">
+</audio>
+    </body>
+    <script>
+        function clickPresent() {
+            setTimeout(function() {var button = document.getElementById("buttondiv");
+            button.style.display = "block"}, 14000);
+            var present = document.getElementById("closedPresent");
+            var OPresent = document.getElementById("openPresent");
+            var seconds = 2
+            present.style.display = "none";
+            OPresent.style.display = "block";
+            OPresent.style.left = "50%";
+            var images = document.getElementsByTagName("img");
+            for (var image of images) {
+
+                var delay = seconds + "s";
+                image.style.cssText += "animation: fadeIn 5s forwards;";
+                image.style.cssText += "animation-delay: " + delay;
+                console.log(delay, seconds);
+                seconds += 5;
+            }
+
+        }
+
+    </script>
 </html>
